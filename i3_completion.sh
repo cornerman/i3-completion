@@ -502,6 +502,21 @@ _i3-msg()
 		return 0
 	fi
 
+	# move window to absolute position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window to absolute position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window to absolute position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
 	# move window to absolute position <word>
 	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
 		local opts="px WORD"
@@ -525,6 +540,21 @@ _i3-msg()
 
 	# move container to absolute position center
 	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to absolute position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to absolute position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to absolute position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -852,6 +882,16 @@ _i3-msg()
 		return 0
 	fi
 
+	# move window to mark <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to mark <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
 	# move window to left <word>
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		local opts="px"
@@ -973,6 +1013,21 @@ _i3-msg()
 		return 0
 	fi
 
+	# move window to position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window to position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window to position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
 	# move window to position <word>
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		local opts="px WORD"
@@ -996,6 +1051,21 @@ _i3-msg()
 
 	# move container to position center
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1048,13 +1118,28 @@ _i3-msg()
 
 	# move window to absolute position
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move window absolute position center
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window absolute position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window absolute position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window absolute position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1067,13 +1152,28 @@ _i3-msg()
 
 	# move container to absolute position
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move container absolute position center
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container absolute position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container absolute position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container absolute position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1086,6 +1186,21 @@ _i3-msg()
 
 	# move to absolute position center
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to absolute position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to absolute position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to absolute position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1457,6 +1572,35 @@ _i3-msg()
 		return 0
 	fi
 
+	# move window to mark
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move window mark <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container to mark
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move container mark <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to mark <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
 	# move window to scratchpad
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
 		return 0
@@ -1629,13 +1773,28 @@ _i3-msg()
 
 	# move window to position
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move window position center
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window position mouse
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window position cursor
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window position pointer
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1648,13 +1807,28 @@ _i3-msg()
 
 	# move container to position
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move container position center
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container position mouse
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container position cursor
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move container position pointer
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1667,6 +1841,21 @@ _i3-msg()
 
 	# move to position center
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to position mouse
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to position cursor
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move to position pointer
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1700,7 +1889,7 @@ _i3-msg()
 
 	# move window absolute position
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -1714,20 +1903,35 @@ _i3-msg()
 
 	# move container absolute position
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move to absolute position
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move absolute position center
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move absolute position mouse
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move absolute position cursor
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move absolute position pointer
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -1871,7 +2075,7 @@ _i3-msg()
 
 	# move window to
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
-		local opts="workspace output scratchpad left right up down position absolute"
+		local opts="workspace output mark scratchpad left right up down position absolute"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -1885,7 +2089,7 @@ _i3-msg()
 
 	# move container to
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
-		local opts="workspace output scratchpad left right up down position absolute"
+		local opts="workspace output mark scratchpad left right up down position absolute"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -1969,6 +2173,32 @@ _i3-msg()
 
 	# move output <word>
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move window mark
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move container mark
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move to mark
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move mark <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -2101,27 +2331,42 @@ _i3-msg()
 
 	# move window position
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move container position
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move to position
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move position center
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move position mouse
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move position cursor
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move position pointer
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -2155,7 +2400,7 @@ _i3-msg()
 
 	# move absolute position
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -2192,6 +2437,11 @@ _i3-msg()
 
 	# focus output <word>
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "focus" ) ]] ; then
+		return 0
+	fi
+
+	# mark --toggle <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
 		return 0
 	fi
 
@@ -2377,6 +2627,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# [ window_type =
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "=" && ${COMP_WORDS[COMP_CWORD-2]} == "window_type" && (${COMP_WORDS[COMP_CWORD-3]} == "[" || ${COMP_WORDS[COMP_CWORD-4]} == "=") ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# [ con_mark =
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "=" && ${COMP_WORDS[COMP_CWORD-2]} == "con_mark" && (${COMP_WORDS[COMP_CWORD-3]} == "[" || ${COMP_WORDS[COMP_CWORD-4]} == "=") ) ]] ; then
 		local opts="WORD"
@@ -2398,23 +2655,30 @@ _i3-msg()
 		return 0
 	fi
 
+	# [ workspace =
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "=" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && (${COMP_WORDS[COMP_CWORD-3]} == "[" || ${COMP_WORDS[COMP_CWORD-4]} == "=") ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# move window
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "window" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
-		local opts="to workspace output scratchpad left right up down position absolute"
+		local opts="to workspace output mark scratchpad left right up down position absolute"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move container
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "container" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
-		local opts="to workspace output scratchpad left right up down position absolute"
+		local opts="to workspace output mark scratchpad left right up down position absolute"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# move to
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
-		local opts="workspace output scratchpad left right up down position absolute"
+		local opts="workspace output mark scratchpad left right up down position absolute"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -2428,6 +2692,13 @@ _i3-msg()
 
 	# move output
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move mark
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
 		local opts="WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
@@ -2468,7 +2739,7 @@ _i3-msg()
 
 	# move position
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
-		local opts="center WORD"
+		local opts="center mouse cursor pointer WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -2722,6 +2993,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# mark --toggle
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# mark <word>
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" ) ]] ; then
 		return 0
@@ -2760,6 +3038,11 @@ _i3-msg()
 
 	# scratchpad show
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "show" && ${COMP_WORDS[COMP_CWORD-2]} == "scratchpad" ) ]] ; then
+		return 0
+	fi
+
+	# title_format <word>
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-2]} == "title_format" ) ]] ; then
 		return 0
 	fi
 
@@ -2817,6 +3100,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# [ window_type
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "window_type" && (${COMP_WORDS[COMP_CWORD-2]} == "[" || ${COMP_WORDS[COMP_CWORD-3]} == "=") ) ]] ; then
+		local opts="="
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# [ con_mark
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "con_mark" && (${COMP_WORDS[COMP_CWORD-2]} == "[" || ${COMP_WORDS[COMP_CWORD-3]} == "=") ) ]] ; then
 		local opts="="
@@ -2838,9 +3128,16 @@ _i3-msg()
 		return 0
 	fi
 
+	# [ workspace
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && (${COMP_WORDS[COMP_CWORD-2]} == "[" || ${COMP_WORDS[COMP_CWORD-3]} == "=") ) ]] ; then
+		local opts="="
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# move
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "move" ) ]] ; then
-		local opts="window container to workspace output scratchpad left right up down position absolute"
+		local opts="window container to workspace output mark scratchpad left right up down position absolute"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -2951,7 +3248,7 @@ _i3-msg()
 
 	# mark
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" ) ]] ; then
-		local opts="WORD"
+		local opts="--toggle WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -2991,6 +3288,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# title_format
+	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "title_format" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# mode
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mode" ) ]] ; then
 		local opts="WORD"
@@ -3007,14 +3311,14 @@ _i3-msg()
 
 	# [
 	if [[ $COMP_CWORD -gt 1 && ( (${COMP_WORDS[COMP_CWORD-1]} == "[" || ${COMP_WORDS[COMP_CWORD-2]} == "=") ) ]] ; then
-		local opts="] class instance window_role con_id id con_mark title urgent"
+		local opts="] class instance window_role con_id id window_type con_mark title urgent workspace"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# 
 	if [[ $cur != -* && ($COMP_CWORD == 1 || ${COMP_WORDS[COMP_CWORD-1]} == "]" || ${COMP_WORDS[COMP_CWORD-2]} == "-t" || ${COMP_WORDS[COMP_CWORD-2]} == "-s") ]] ; then
-		local opts="move exec exit restart reload shmlog debuglog border layout append_layout workspace focus kill open fullscreen split floating mark unmark resize rename nop scratchpad mode bar ["
+		local opts="move exec exit restart reload shmlog debuglog border layout append_layout workspace focus kill open fullscreen split floating mark unmark resize rename nop scratchpad title_format mode bar ["
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi

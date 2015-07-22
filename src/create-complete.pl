@@ -4,7 +4,7 @@ use List::MoreUtils qw(uniq);
 use List::Util qw[min max];
 use Data::Dumper;
 
-my $file = "/tmp/_i3_commands_list";
+my $file = "_i3_commands_list";
 
 open(my $handle, '<', $file) or die "could not open $file";
 my @lines = <$handle>;

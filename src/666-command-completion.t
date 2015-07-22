@@ -8,12 +8,12 @@ use Data::Dumper;
 my $bogus = "1337";
 
 # result file
-my $file = "/tmp/_i3_commands_list";
+my $file = "_i3_commands_list";
 
 sub try_command {
     my $cmd = shift;
 
-    print "try: " . $cmd . "\n";
+    print "try: $cmd\n";
 
     # restarting and exiting is not a good idea, so take care of these commands
     # manually: just reload instead - which has the same syntax
@@ -21,6 +21,8 @@ sub try_command {
 
     # issue the command
     my $response = cmd $cmd;
+
+    print "response" . Dumper($response->[0]) . "\n";
 
     return $response;
 }
@@ -39,19 +41,19 @@ sub build_completions {
 
     @tokens = split(/,/, $tokens[1]);
 
-    # remove spaces and quotes. 
+    # remove spaces and quotes.
     @tokens = map { $_ =~ tr/\'//d; $_ } @tokens;
     # TODO: strange " to " completion option
     # this is different than the "to" - handled later
     @tokens = grep { $_ ne " to " }  @tokens;
     @tokens = map { $_ =~ tr/ //d; $_ } @tokens;
-    
+
     # remove criteria, this is handled elsewhere
     @tokens = map { $_ =~ m/\[|\]/ ? () : $_ } @tokens;
 
     # take care of the ambigous "... to ..." construction, completion option
     # "to" with lhs on the left, and rhs on the right side
-    my $idx = firstidx { $_ eq "to" } @tokens;   
+    my $idx = firstidx { $_ eq "to" } @tokens;
     if ($idx > -1) {
         my @rhs = @tokens;
         my @lhs = splice @rhs, 0, $idx + 1;
@@ -77,12 +79,10 @@ sub build_completions {
     @tokens = map { $_ eq "<string>" ? "<word>" : $_ } @tokens;
 
     return uniq(@tokens);
-} 
+}
 
 sub get_completions {
     my $cmd = shift;
-
-    print "complete: " . $cmd . "\n";
 
     # issue the command
     my $response_cmd = try_command($cmd);
@@ -93,7 +93,6 @@ sub get_completions {
     # check whether the command was successful
     my $parse_error = $response_cmd->[0]->{parse_error} || defined($response_cmd->[1]);
     if (!$parse_error) {
-        print "first success!\n";
         push(@add_complete, "<end>");
     }
 
@@ -103,7 +102,6 @@ sub get_completions {
     # check whether the command was successful
     my $parse_error_bogus = $response_bogus->[0]->{parse_error} || defined($response_bogus->[1]);
     if (!$parse_error_bogus) {
-        print "second success!\n";
         push(@add_complete, "<word>");
     }
 
@@ -112,9 +110,8 @@ sub get_completions {
     @complete = (@complete, @add_complete);
     @complete = uniq(@complete);
 
-    print "completed:" . Dumper(@complete);
     return uniq(@complete);
-} 
+}
 
 sub get_criteria {
     my $cmd = "[";
@@ -132,12 +129,10 @@ sub get_criteria {
 sub get_commands {
     my @tokens = @_;
 
-    print "enter get_commands\n";
     my @cmds = ();
     foreach my $token (@tokens) {
-        print "TOKEN: $token\n";
         my @current = get_completions($token);
-        if (scalar @current > 0) { 
+        if (scalar @current > 0) {
 
             # TODO: chain of words...
             if ($token =~ m/(<word>$)/ && !($token =~ m/position <word>( <word>)?$/)) {
@@ -152,11 +147,10 @@ sub get_commands {
                 @current = grep { !($_ =~ m/to|<end>/) } @current;
             }
 
-            if ($token =~ m/--no-startup-id/) {
-                @current = grep { $_ ne "--no-startup-id" } @current;
+            if ($token =~ m/-(-[a-z]+)+/) {
+                @current = grep { $_ ne $& } @current;
             }
 
-            print Dumper(@current);
             # finished word
             if (grep { $_ eq "<end>"} @current) {
                 push(@cmds, $token);
@@ -174,7 +168,7 @@ sub get_commands {
 # get criteria rules
 my @criteria = get_criteria();
 
-# get completions, we start with a bogus command 
+# get completions, we start with a bogus command
 my @complete = get_completions($bogus);
 @complete = map { $_ eq "<end>" ? () : $_ } @complete;
 my @cmds = get_commands(@complete);
@@ -186,7 +180,7 @@ print MYFILE join("\n", @cmds);
 close (MYFILE);
 
 # check
-is(scalar @cmds, 364, "number of commands ok.");
+is(scalar @cmds, 411, "number of commands ok.");
 
 print "\n-> results written to: $file\n";
 
