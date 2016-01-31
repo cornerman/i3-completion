@@ -1,3 +1,4 @@
+# i3 version: 4.11
 move window to workspace next_on_output
 move window to workspace prev_on_output
 move window to workspace next
@@ -282,6 +283,9 @@ kill client
 open
 fullscreen
 fullscreen global
+sticky enable
+sticky disable
+sticky toggle
 split horizontal
 split vertical
 split v
@@ -377,6 +381,10 @@ resize shrink height <word> px or <word>
 resize shrink height <word> px or <word> ppt
 resize shrink height <word> or <word>
 resize shrink height <word> or <word> ppt
+resize set <word> px <word>
+resize set <word> px <word> px
+resize set <word> <word>
+resize set <word> <word> px
 rename workspace to <word>
 rename workspace <word> to <word>
 nop

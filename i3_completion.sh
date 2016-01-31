@@ -1,3 +1,4 @@
+# i3 version: 4.11
 
 _i3-msg() 
 {
@@ -773,6 +774,11 @@ _i3-msg()
 		return 0
 	fi
 
+	# resize set <word> px <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "set" && ${COMP_WORDS[COMP_CWORD-6]} == "resize" ) ]] ; then
+		return 0
+	fi
+
 	# move window to workspace next_on_output
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		return 0
@@ -1390,6 +1396,18 @@ _i3-msg()
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "or" && ${COMP_WORDS[COMP_CWORD-3]} == "height" && ${COMP_WORDS[COMP_CWORD-4]} == "shrink" && ${COMP_WORDS[COMP_CWORD-5]} == "resize" ) ]] ; then
 		local opts="WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# resize set <word> px <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "set" && ${COMP_WORDS[COMP_CWORD-5]} == "resize" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# resize set <word> <word> px
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "set" && ${COMP_WORDS[COMP_CWORD-5]} == "resize" ) ]] ; then
 		return 0
 	fi
 
@@ -2026,6 +2044,20 @@ _i3-msg()
 		return 0
 	fi
 
+	# resize set <word> px
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "set" && ${COMP_WORDS[COMP_CWORD-4]} == "resize" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# resize set <word> <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-3]} == "set" && ${COMP_WORDS[COMP_CWORD-4]} == "resize" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# rename workspace to <word>
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "rename" ) ]] ; then
 		return 0
@@ -2529,6 +2561,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# resize set <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "set" && ${COMP_WORDS[COMP_CWORD-3]} == "resize" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# rename workspace to
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "rename" ) ]] ; then
 		local opts="WORD"
@@ -2958,6 +2997,21 @@ _i3-msg()
 		return 0
 	fi
 
+	# sticky enable
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "enable" && ${COMP_WORDS[COMP_CWORD-2]} == "sticky" ) ]] ; then
+		return 0
+	fi
+
+	# sticky disable
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "disable" && ${COMP_WORDS[COMP_CWORD-2]} == "sticky" ) ]] ; then
+		return 0
+	fi
+
+	# sticky toggle
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "sticky" ) ]] ; then
+		return 0
+	fi
+
 	# split horizontal
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "horizontal" && ${COMP_WORDS[COMP_CWORD-2]} == "split" ) ]] ; then
 		return 0
@@ -3020,6 +3074,13 @@ _i3-msg()
 	# resize shrink
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "shrink" && ${COMP_WORDS[COMP_CWORD-2]} == "resize" ) ]] ; then
 		local opts="up down left right width height"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# resize set
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "set" && ${COMP_WORDS[COMP_CWORD-2]} == "resize" ) ]] ; then
+		local opts="WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -3232,6 +3293,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# sticky
+	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "sticky" ) ]] ; then
+		local opts="enable disable toggle"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# split
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "split" ) ]] ; then
 		local opts="horizontal vertical v h"
@@ -3262,7 +3330,7 @@ _i3-msg()
 
 	# resize
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "resize" ) ]] ; then
-		local opts="grow shrink"
+		local opts="grow shrink set"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -3318,7 +3386,7 @@ _i3-msg()
 
 	# 
 	if [[ $cur != -* && ($COMP_CWORD == 1 || ${COMP_WORDS[COMP_CWORD-1]} == "]" || ${COMP_WORDS[COMP_CWORD-2]} == "-t" || ${COMP_WORDS[COMP_CWORD-2]} == "-s") ]] ; then
-		local opts="move exec exit restart reload shmlog debuglog border layout append_layout workspace focus kill open fullscreen split floating mark unmark resize rename nop scratchpad title_format mode bar ["
+		local opts="move exec exit restart reload shmlog debuglog border layout append_layout workspace focus kill open fullscreen sticky split floating mark unmark resize rename nop scratchpad title_format mode bar ["
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
