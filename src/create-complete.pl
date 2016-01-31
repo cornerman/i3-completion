@@ -4,7 +4,13 @@ use List::MoreUtils qw(uniq);
 use List::Util qw[min max];
 use Data::Dumper;
 
-my $file = "_i3_commands_list";
+$num_args = $#ARGV + 1;
+if ($num_args != 1) {
+    print "Usage: create-complete.pl <commands_file>\n";
+    exit;
+}
+
+my $file = $ARGV[0];
 
 open(my $handle, '<', $file) or die "could not open $file";
 my @lines = <$handle>;
