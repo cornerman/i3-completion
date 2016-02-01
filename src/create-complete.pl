@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use List::MoreUtils qw(uniq);
 use List::Util qw[min max];

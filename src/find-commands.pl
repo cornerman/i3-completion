@@ -1,19 +1,24 @@
-#!perl
+#!/usr/bin/env perl
 
-use i3test;
+use AnyEvent;
+use AnyEvent::I3;
 use List::MoreUtils qw(firstidx uniq);
 use Data::Dumper;
+
+$num_args = $#ARGV + 1;
+if ($num_args != 1) {
+    print "Usage: find-commands.pl <i3_socket>\n";
+    exit;
+}
+
+my $i3 = i3($ARGV[0]);
+$i3->connect->recv or die "Error connecting to i3";
 
 # define bogus symbol to be fed to i3. border seems to only accepts numbers somehow
 my $bogus = "1337";
 
-# result file
-my $file = "_i3_commands_list";
-
 sub try_command {
     my $cmd = shift;
-
-    print "try: $cmd\n";
 
     # restarting and exiting is not a good idea, so take care of these commands
     # manually: just reload instead - which has the same syntax
@@ -24,9 +29,7 @@ sub try_command {
     $cmd =~ s/<word>/$bogus/g;
 
     # issue the command
-    my $response = cmd $cmd;
-
-    print "response" . Dumper($response->[0]) . "\n";
+    my $response = $i3->command($cmd)->recv;
 
     return $response;
 }
@@ -194,15 +197,4 @@ my @complete = get_completions($bogus);
 my @cmds = get_commands(@complete);
 @cmds = (@cmds, @criteria);
 
-# write results
-open (MYFILE, '>', $file) or die "could not open $file";
-print MYFILE join("\n", @cmds);
-close (MYFILE);
-
-# check
-is(scalar @cmds, 418, "number of commands ok.");
-
-print "\n-> results written to: $file\n";
-
-done_testing;
-
+print join("\n", @cmds);
