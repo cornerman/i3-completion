@@ -1,4 +1,4 @@
-# i3 version: 4.11
+# i3 version: 4.12
 move window to workspace next_on_output
 move window to workspace prev_on_output
 move window to workspace next
@@ -233,6 +233,240 @@ move absolute position <word> px <word>
 move absolute position <word> px <word> px
 move absolute position <word> <word>
 move absolute position <word> <word> px
+move --no-auto-back-and-forth window to workspace next_on_output
+move --no-auto-back-and-forth window to workspace prev_on_output
+move --no-auto-back-and-forth window to workspace next
+move --no-auto-back-and-forth window to workspace prev
+move --no-auto-back-and-forth window to workspace current
+move --no-auto-back-and-forth window to workspace back_and_forth
+move --no-auto-back-and-forth window to workspace number <word>
+move --no-auto-back-and-forth window to workspace <word>
+move --no-auto-back-and-forth window workspace next_on_output
+move --no-auto-back-and-forth window workspace prev_on_output
+move --no-auto-back-and-forth window workspace next
+move --no-auto-back-and-forth window workspace prev
+move --no-auto-back-and-forth window workspace current
+move --no-auto-back-and-forth window workspace back_and_forth
+move --no-auto-back-and-forth window workspace number <word>
+move --no-auto-back-and-forth window workspace <word>
+move --no-auto-back-and-forth container to workspace next_on_output
+move --no-auto-back-and-forth container to workspace prev_on_output
+move --no-auto-back-and-forth container to workspace next
+move --no-auto-back-and-forth container to workspace prev
+move --no-auto-back-and-forth container to workspace current
+move --no-auto-back-and-forth container to workspace back_and_forth
+move --no-auto-back-and-forth container to workspace number <word>
+move --no-auto-back-and-forth container to workspace <word>
+move --no-auto-back-and-forth container workspace next_on_output
+move --no-auto-back-and-forth container workspace prev_on_output
+move --no-auto-back-and-forth container workspace next
+move --no-auto-back-and-forth container workspace prev
+move --no-auto-back-and-forth container workspace current
+move --no-auto-back-and-forth container workspace back_and_forth
+move --no-auto-back-and-forth container workspace number <word>
+move --no-auto-back-and-forth container workspace <word>
+move --no-auto-back-and-forth to workspace next_on_output
+move --no-auto-back-and-forth to workspace prev_on_output
+move --no-auto-back-and-forth to workspace next
+move --no-auto-back-and-forth to workspace prev
+move --no-auto-back-and-forth to workspace current
+move --no-auto-back-and-forth to workspace back_and_forth
+move --no-auto-back-and-forth to workspace number <word>
+move --no-auto-back-and-forth to workspace <word>
+move --no-auto-back-and-forth workspace next_on_output
+move --no-auto-back-and-forth workspace prev_on_output
+move --no-auto-back-and-forth workspace next
+move --no-auto-back-and-forth workspace prev
+move --no-auto-back-and-forth workspace current
+move --no-auto-back-and-forth workspace back_and_forth
+move --no-auto-back-and-forth workspace number <word>
+move --no-auto-back-and-forth workspace <word>
+move --no-auto-back-and-forth window to output <word>
+move --no-auto-back-and-forth window output <word>
+move --no-auto-back-and-forth container to output <word>
+move --no-auto-back-and-forth container output <word>
+move --no-auto-back-and-forth to output <word>
+move --no-auto-back-and-forth output <word>
+move --no-auto-back-and-forth window to mark <word>
+move --no-auto-back-and-forth window mark <word>
+move --no-auto-back-and-forth container to mark <word>
+move --no-auto-back-and-forth container mark <word>
+move --no-auto-back-and-forth to mark <word>
+move --no-auto-back-and-forth mark <word>
+move --no-auto-back-and-forth window to scratchpad
+move --no-auto-back-and-forth window scratchpad
+move --no-auto-back-and-forth container to scratchpad
+move --no-auto-back-and-forth container scratchpad
+move --no-auto-back-and-forth to scratchpad
+move --no-auto-back-and-forth scratchpad
+move --no-auto-back-and-forth window to left
+move --no-auto-back-and-forth window to left <word>
+move --no-auto-back-and-forth window to left <word> px
+move --no-auto-back-and-forth window left
+move --no-auto-back-and-forth window left <word>
+move --no-auto-back-and-forth window left <word> px
+move --no-auto-back-and-forth container to left
+move --no-auto-back-and-forth container to left <word>
+move --no-auto-back-and-forth container to left <word> px
+move --no-auto-back-and-forth container left
+move --no-auto-back-and-forth container left <word>
+move --no-auto-back-and-forth container left <word> px
+move --no-auto-back-and-forth to left
+move --no-auto-back-and-forth to left <word>
+move --no-auto-back-and-forth to left <word> px
+move --no-auto-back-and-forth left
+move --no-auto-back-and-forth left <word>
+move --no-auto-back-and-forth left <word> px
+move --no-auto-back-and-forth window to right
+move --no-auto-back-and-forth window to right <word>
+move --no-auto-back-and-forth window to right <word> px
+move --no-auto-back-and-forth window right
+move --no-auto-back-and-forth window right <word>
+move --no-auto-back-and-forth window right <word> px
+move --no-auto-back-and-forth container to right
+move --no-auto-back-and-forth container to right <word>
+move --no-auto-back-and-forth container to right <word> px
+move --no-auto-back-and-forth container right
+move --no-auto-back-and-forth container right <word>
+move --no-auto-back-and-forth container right <word> px
+move --no-auto-back-and-forth to right
+move --no-auto-back-and-forth to right <word>
+move --no-auto-back-and-forth to right <word> px
+move --no-auto-back-and-forth right
+move --no-auto-back-and-forth right <word>
+move --no-auto-back-and-forth right <word> px
+move --no-auto-back-and-forth window to up
+move --no-auto-back-and-forth window to up <word>
+move --no-auto-back-and-forth window to up <word> px
+move --no-auto-back-and-forth window up
+move --no-auto-back-and-forth window up <word>
+move --no-auto-back-and-forth window up <word> px
+move --no-auto-back-and-forth container to up
+move --no-auto-back-and-forth container to up <word>
+move --no-auto-back-and-forth container to up <word> px
+move --no-auto-back-and-forth container up
+move --no-auto-back-and-forth container up <word>
+move --no-auto-back-and-forth container up <word> px
+move --no-auto-back-and-forth to up
+move --no-auto-back-and-forth to up <word>
+move --no-auto-back-and-forth to up <word> px
+move --no-auto-back-and-forth up
+move --no-auto-back-and-forth up <word>
+move --no-auto-back-and-forth up <word> px
+move --no-auto-back-and-forth window to down
+move --no-auto-back-and-forth window to down <word>
+move --no-auto-back-and-forth window to down <word> px
+move --no-auto-back-and-forth window down
+move --no-auto-back-and-forth window down <word>
+move --no-auto-back-and-forth window down <word> px
+move --no-auto-back-and-forth container to down
+move --no-auto-back-and-forth container to down <word>
+move --no-auto-back-and-forth container to down <word> px
+move --no-auto-back-and-forth container down
+move --no-auto-back-and-forth container down <word>
+move --no-auto-back-and-forth container down <word> px
+move --no-auto-back-and-forth to down
+move --no-auto-back-and-forth to down <word>
+move --no-auto-back-and-forth to down <word> px
+move --no-auto-back-and-forth down
+move --no-auto-back-and-forth down <word>
+move --no-auto-back-and-forth down <word> px
+move --no-auto-back-and-forth window to position center
+move --no-auto-back-and-forth window to position mouse
+move --no-auto-back-and-forth window to position cursor
+move --no-auto-back-and-forth window to position pointer
+move --no-auto-back-and-forth window to position <word> px <word>
+move --no-auto-back-and-forth window to position <word> px <word> px
+move --no-auto-back-and-forth window to position <word> <word>
+move --no-auto-back-and-forth window to position <word> <word> px
+move --no-auto-back-and-forth window position center
+move --no-auto-back-and-forth window position mouse
+move --no-auto-back-and-forth window position cursor
+move --no-auto-back-and-forth window position pointer
+move --no-auto-back-and-forth window position <word> px <word>
+move --no-auto-back-and-forth window position <word> px <word> px
+move --no-auto-back-and-forth window position <word> <word>
+move --no-auto-back-and-forth window position <word> <word> px
+move --no-auto-back-and-forth container to position center
+move --no-auto-back-and-forth container to position mouse
+move --no-auto-back-and-forth container to position cursor
+move --no-auto-back-and-forth container to position pointer
+move --no-auto-back-and-forth container to position <word> px <word>
+move --no-auto-back-and-forth container to position <word> px <word> px
+move --no-auto-back-and-forth container to position <word> <word>
+move --no-auto-back-and-forth container to position <word> <word> px
+move --no-auto-back-and-forth container position center
+move --no-auto-back-and-forth container position mouse
+move --no-auto-back-and-forth container position cursor
+move --no-auto-back-and-forth container position pointer
+move --no-auto-back-and-forth container position <word> px <word>
+move --no-auto-back-and-forth container position <word> px <word> px
+move --no-auto-back-and-forth container position <word> <word>
+move --no-auto-back-and-forth container position <word> <word> px
+move --no-auto-back-and-forth to position center
+move --no-auto-back-and-forth to position mouse
+move --no-auto-back-and-forth to position cursor
+move --no-auto-back-and-forth to position pointer
+move --no-auto-back-and-forth to position <word> px <word>
+move --no-auto-back-and-forth to position <word> px <word> px
+move --no-auto-back-and-forth to position <word> <word>
+move --no-auto-back-and-forth to position <word> <word> px
+move --no-auto-back-and-forth position center
+move --no-auto-back-and-forth position mouse
+move --no-auto-back-and-forth position cursor
+move --no-auto-back-and-forth position pointer
+move --no-auto-back-and-forth position <word> px <word>
+move --no-auto-back-and-forth position <word> px <word> px
+move --no-auto-back-and-forth position <word> <word>
+move --no-auto-back-and-forth position <word> <word> px
+move --no-auto-back-and-forth window to absolute position center
+move --no-auto-back-and-forth window to absolute position mouse
+move --no-auto-back-and-forth window to absolute position cursor
+move --no-auto-back-and-forth window to absolute position pointer
+move --no-auto-back-and-forth window to absolute position <word> px <word>
+move --no-auto-back-and-forth window to absolute position <word> px <word> px
+move --no-auto-back-and-forth window to absolute position <word> <word>
+move --no-auto-back-and-forth window to absolute position <word> <word> px
+move --no-auto-back-and-forth window absolute position center
+move --no-auto-back-and-forth window absolute position mouse
+move --no-auto-back-and-forth window absolute position cursor
+move --no-auto-back-and-forth window absolute position pointer
+move --no-auto-back-and-forth window absolute position <word> px <word>
+move --no-auto-back-and-forth window absolute position <word> px <word> px
+move --no-auto-back-and-forth window absolute position <word> <word>
+move --no-auto-back-and-forth window absolute position <word> <word> px
+move --no-auto-back-and-forth container to absolute position center
+move --no-auto-back-and-forth container to absolute position mouse
+move --no-auto-back-and-forth container to absolute position cursor
+move --no-auto-back-and-forth container to absolute position pointer
+move --no-auto-back-and-forth container to absolute position <word> px <word>
+move --no-auto-back-and-forth container to absolute position <word> px <word> px
+move --no-auto-back-and-forth container to absolute position <word> <word>
+move --no-auto-back-and-forth container to absolute position <word> <word> px
+move --no-auto-back-and-forth container absolute position center
+move --no-auto-back-and-forth container absolute position mouse
+move --no-auto-back-and-forth container absolute position cursor
+move --no-auto-back-and-forth container absolute position pointer
+move --no-auto-back-and-forth container absolute position <word> px <word>
+move --no-auto-back-and-forth container absolute position <word> px <word> px
+move --no-auto-back-and-forth container absolute position <word> <word>
+move --no-auto-back-and-forth container absolute position <word> <word> px
+move --no-auto-back-and-forth to absolute position center
+move --no-auto-back-and-forth to absolute position mouse
+move --no-auto-back-and-forth to absolute position cursor
+move --no-auto-back-and-forth to absolute position pointer
+move --no-auto-back-and-forth to absolute position <word> px <word>
+move --no-auto-back-and-forth to absolute position <word> px <word> px
+move --no-auto-back-and-forth to absolute position <word> <word>
+move --no-auto-back-and-forth to absolute position <word> <word> px
+move --no-auto-back-and-forth absolute position center
+move --no-auto-back-and-forth absolute position mouse
+move --no-auto-back-and-forth absolute position cursor
+move --no-auto-back-and-forth absolute position pointer
+move --no-auto-back-and-forth absolute position <word> px <word>
+move --no-auto-back-and-forth absolute position <word> px <word> px
+move --no-auto-back-and-forth absolute position <word> <word>
+move --no-auto-back-and-forth absolute position <word> <word> px
 exec --no-startup-id <word>
 exec <word>
 exit
@@ -259,6 +493,13 @@ layout toggle
 layout toggle split
 layout toggle all
 append_layout <word>
+workspace --no-auto-back-and-forth next_on_output
+workspace --no-auto-back-and-forth prev_on_output
+workspace --no-auto-back-and-forth next
+workspace --no-auto-back-and-forth prev
+workspace --no-auto-back-and-forth back_and_forth
+workspace --no-auto-back-and-forth number <word>
+workspace --no-auto-back-and-forth <word>
 workspace next_on_output
 workspace prev_on_output
 workspace next
@@ -288,11 +529,27 @@ sticky disable
 sticky toggle
 split horizontal
 split vertical
+split toggle
 split v
 split h
+split t
 floating enable
 floating disable
 floating toggle
+mark --add --replace --toggle <word>
+mark --add --replace <word>
+mark --add --toggle --replace <word>
+mark --add --toggle <word>
+mark --add <word>
+mark --replace --add --toggle <word>
+mark --replace --add <word>
+mark --replace --toggle --add <word>
+mark --replace --toggle <word>
+mark --replace <word>
+mark --toggle --add --replace <word>
+mark --toggle --add <word>
+mark --toggle --replace --add <word>
+mark --toggle --replace <word>
 mark --toggle <word>
 mark <word>
 unmark

@@ -1,4 +1,4 @@
-# i3 version: 4.11
+# i3 version: 4.12
 
 _i3-msg() 
 {
@@ -8,6 +8,16 @@ _i3-msg()
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
 
+	# move --no-auto-back-and-forth window to absolute position <word> px <word> px
+	if [[ $COMP_CWORD -gt 10 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "to" && ${COMP_WORDS[COMP_CWORD-8]} == "window" && ${COMP_WORDS[COMP_CWORD-9]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-10]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position <word> px <word> px
+	if [[ $COMP_CWORD -gt 10 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "to" && ${COMP_WORDS[COMP_CWORD-8]} == "container" && ${COMP_WORDS[COMP_CWORD-9]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-10]} == "move" ) ]] ; then
+		return 0
+	fi
+
 	# move window to absolute position <word> px <word> px
 	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "to" && ${COMP_WORDS[COMP_CWORD-8]} == "window" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
 		return 0
@@ -15,6 +25,55 @@ _i3-msg()
 
 	# move container to absolute position <word> px <word> px
 	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "to" && ${COMP_WORDS[COMP_CWORD-8]} == "container" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position <word> px <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "window" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position <word> px <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "container" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position <word> px <word>
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "window" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position <word> <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "window" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position <word> px <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "window" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position <word> px <word>
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "container" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position <word> <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "container" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position <word> px <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "container" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position <word> px <word> px
+	if [[ $COMP_CWORD -gt 9 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "to" && ${COMP_WORDS[COMP_CWORD-8]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-9]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -64,6 +123,114 @@ _i3-msg()
 
 	# move to absolute position <word> px <word> px
 	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "to" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position <word> px <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position <word> <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position <word> px <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position <word> px <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position <word> <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position <word> px <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position <word> px <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position <word> <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position <word> px <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position <word> <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "window" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position <word> <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position <word> px <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position <word> <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "container" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position <word> px <word>
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position <word> <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "to" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position <word> px <word> px
+	if [[ $COMP_CWORD -gt 8 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-8]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -232,6 +399,233 @@ _i3-msg()
 
 	# move absolute position <word> px <word> px
 	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "absolute" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace number <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace number <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to left <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "left" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to left <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "left" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to right <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "right" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to right <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "right" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to up <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "up" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to up <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "up" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to down <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "down" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to down <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "down" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position <word> <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position <word> px <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position <word> <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position <word> <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position <word> px <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position <word> <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position <word> px <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position <word> <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position <word> px <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "position" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position center
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position mouse
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position cursor
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position pointer
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position <word> <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "window" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position center
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position mouse
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position cursor
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position pointer
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position <word> <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "container" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position <word> <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "to" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position <word> px <word>
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position <word> <word> px
+	if [[ $COMP_CWORD -gt 7 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-7]} == "move" ) ]] ; then
 		return 0
 	fi
 
@@ -603,6 +997,458 @@ _i3-msg()
 
 	# move absolute position <word> <word> px
 	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "absolute" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace next_on_output
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace prev_on_output
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace next
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace prev
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace current
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "current" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace back_and_forth
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace number
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace number <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace next_on_output
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace prev_on_output
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace next
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace prev
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace current
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "current" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace back_and_forth
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace number
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace number <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace number <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to output <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to output <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to mark <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to mark <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to left <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window left <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "left" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to left <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container left <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "left" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to left <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "left" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to right <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "right" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window right <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "right" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to right <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "right" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container right <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "right" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to right <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "right" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to up <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window up <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "up" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to up <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container up <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "up" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to up <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "up" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to down <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "down" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window down <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "down" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to down <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "down" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container down <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "down" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to down <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "down" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position center
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position <word> <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position center
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position <word> <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position <word> <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position <word> px <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position <word> <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "position" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute position
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position center
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute position
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position center
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position center
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position mouse
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position cursor
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position pointer
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "to" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position <word> px
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position <word> <word>
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-6]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
@@ -1228,6 +2074,580 @@ _i3-msg()
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "absolute" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		local opts="px"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to workspace
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace next_on_output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace prev_on_output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace next
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace prev
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace current
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "current" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace back_and_forth
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace number
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to workspace
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace next_on_output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace prev_on_output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace next
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace prev
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace current
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "current" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace back_and_forth
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace number
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace next_on_output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace prev_on_output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace next
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace prev
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace current
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "current" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace back_and_forth
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace number
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace number <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window output <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to output
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container output <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to output <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to mark
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window mark <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to mark
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container mark <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to mark <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to scratchpad
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to scratchpad
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to left
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "left" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window left <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to left
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "left" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container left <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to left <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth left <word> px
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "left" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to right
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "right" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window right <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "right" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to right
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "right" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container right <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "right" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to right <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "right" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth right <word> px
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "right" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to up
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "up" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window up <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to up
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "up" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container up <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to up <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth up <word> px
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "up" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to down
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "down" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window down <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "down" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to down
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "down" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container down <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "down" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to down <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "down" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth down <word> px
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "down" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to position
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position center
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to position
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position center
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position center
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position <word> px
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position <word> <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-3]} == "position" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window to absolute
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "absolute" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="position"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute position
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to absolute
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "absolute" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="position"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute position
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute position
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position center
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position mouse
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position cursor
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position pointer
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "absolute" && ${COMP_WORDS[COMP_CWORD-4]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --add --replace --toggle <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "--replace" && ${COMP_WORDS[COMP_CWORD-4]} == "--add" && ${COMP_WORDS[COMP_CWORD-5]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --add --toggle --replace <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-4]} == "--add" && ${COMP_WORDS[COMP_CWORD-5]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --replace --add --toggle <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "--add" && ${COMP_WORDS[COMP_CWORD-4]} == "--replace" && ${COMP_WORDS[COMP_CWORD-5]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --replace --toggle --add <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-4]} == "--replace" && ${COMP_WORDS[COMP_CWORD-5]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --toggle --add --replace <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "--add" && ${COMP_WORDS[COMP_CWORD-4]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-5]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --toggle --replace --add <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "--replace" && ${COMP_WORDS[COMP_CWORD-4]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-5]} == "mark" ) ]] ; then
 		return 0
 	fi
 
@@ -1960,6 +3380,415 @@ _i3-msg()
 		return 0
 	fi
 
+	# move --no-auto-back-and-forth window to
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="workspace output mark scratchpad left right up down position absolute"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window workspace
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container to
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="workspace output mark scratchpad left right up down position absolute"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container workspace
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to workspace
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace next_on_output
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace prev_on_output
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace next
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace prev
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace current
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "current" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace back_and_forth
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace number
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window output
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container output
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to output
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth output <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window mark
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container mark
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to mark
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth mark <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window scratchpad
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container scratchpad
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to scratchpad
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window left
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "left" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container left
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "left" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to left
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "left" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth left <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "left" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window right
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "right" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container right
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "right" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to right
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "right" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth right <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "right" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window up
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "up" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container up
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "up" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to up
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "up" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth up <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window down
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "down" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container down
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "down" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to down
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "down" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth down <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "down" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="px"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window position
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container position
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to position
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position center
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "center" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position mouse
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mouse" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position cursor
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "cursor" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position pointer
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "pointer" && ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "position" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="px WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth window absolute
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "absolute" && ${COMP_WORDS[COMP_CWORD-2]} == "window" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="position"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container absolute
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "absolute" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="position"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to absolute
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "absolute" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="position"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute position
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "absolute" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth number <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-4]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
+	# mark --add --replace --toggle
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "--add" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --add --replace <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "--add" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --add --toggle --replace
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--replace" && ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "--add" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --add --toggle <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "--add" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --replace --add --toggle
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "--replace" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --replace --add <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "--replace" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --replace --toggle --add
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--add" && ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "--replace" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --replace --toggle <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "--replace" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --toggle --add --replace
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--replace" && ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --toggle --add <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --toggle --replace --add
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--add" && ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --toggle --replace <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-4]} == "mark" ) ]] ; then
+		return 0
+	fi
+
 	# resize grow up <word>
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "up" && ${COMP_WORDS[COMP_CWORD-3]} == "grow" && ${COMP_WORDS[COMP_CWORD-4]} == "resize" ) ]] ; then
 		local opts="px or"
@@ -2437,6 +4266,95 @@ _i3-msg()
 		return 0
 	fi
 
+	# move --no-auto-back-and-forth window
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "window" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="to workspace output mark scratchpad left right up down position absolute"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth container
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "container" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="to workspace output mark scratchpad left right up down position absolute"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth to
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "to" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="workspace output mark scratchpad left right up down position absolute"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth workspace
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth output
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "output" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth mark
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth scratchpad
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "scratchpad" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth left
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "left" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth right
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "right" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth up
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "up" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth down
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "down" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth position
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "position" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="center mouse cursor pointer WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# move --no-auto-back-and-forth absolute
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "absolute" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "move" ) ]] ; then
+		local opts="position"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# exec --no-startup-id <word>
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--no-startup-id" && ${COMP_WORDS[COMP_CWORD-3]} == "exec" ) ]] ; then
 		return 0
@@ -2462,6 +4380,43 @@ _i3-msg()
 		return 0
 	fi
 
+	# workspace --no-auto-back-and-forth next_on_output
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth prev_on_output
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth next
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth prev
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "prev" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth back_and_forth
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "back_and_forth" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth number
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "number" && ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
+		return 0
+	fi
+
 	# workspace number <word>
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "number" && ${COMP_WORDS[COMP_CWORD-3]} == "workspace" ) ]] ; then
 		return 0
@@ -2469,6 +4424,58 @@ _i3-msg()
 
 	# focus output <word>
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "output" && ${COMP_WORDS[COMP_CWORD-3]} == "focus" ) ]] ; then
+		return 0
+	fi
+
+	# mark --add --replace
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--replace" && ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		local opts="--toggle WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --add --toggle
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		local opts="--replace WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --add <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--add" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --replace --add
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--add" && ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		local opts="--toggle WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --replace --toggle
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		local opts="--add WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --replace <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "--replace" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		return 0
+	fi
+
+	# mark --toggle --add
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--add" && ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		local opts="--replace WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --toggle --replace
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--replace" && ${COMP_WORDS[COMP_CWORD-2]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "mark" ) ]] ; then
+		local opts="--add WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
@@ -2790,6 +4797,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# move --no-auto-back-and-forth
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
+		local opts="window container to workspace output mark scratchpad left right up down position absolute"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# exec --no-startup-id
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--no-startup-id" && ${COMP_WORDS[COMP_CWORD-2]} == "exec" ) ]] ; then
 		local opts="WORD"
@@ -2890,6 +4904,13 @@ _i3-msg()
 
 	# append_layout <word>
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-2]} == "append_layout" ) ]] ; then
+		return 0
+	fi
+
+	# workspace --no-auto-back-and-forth
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--no-auto-back-and-forth" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" ) ]] ; then
+		local opts="next_on_output prev_on_output next prev back_and_forth number WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
@@ -3022,6 +5043,11 @@ _i3-msg()
 		return 0
 	fi
 
+	# split toggle
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "split" ) ]] ; then
+		return 0
+	fi
+
 	# split v
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "v" && ${COMP_WORDS[COMP_CWORD-2]} == "split" ) ]] ; then
 		return 0
@@ -3029,6 +5055,11 @@ _i3-msg()
 
 	# split h
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "h" && ${COMP_WORDS[COMP_CWORD-2]} == "split" ) ]] ; then
+		return 0
+	fi
+
+	# split t
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "t" && ${COMP_WORDS[COMP_CWORD-2]} == "split" ) ]] ; then
 		return 0
 	fi
 
@@ -3047,9 +5078,23 @@ _i3-msg()
 		return 0
 	fi
 
+	# mark --add
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--add" && ${COMP_WORDS[COMP_CWORD-2]} == "mark" ) ]] ; then
+		local opts="--replace --toggle WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# mark --replace
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--replace" && ${COMP_WORDS[COMP_CWORD-2]} == "mark" ) ]] ; then
+		local opts="--add --toggle WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# mark --toggle
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "--toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "mark" ) ]] ; then
-		local opts="WORD"
+		local opts="--add --replace WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -3198,7 +5243,7 @@ _i3-msg()
 
 	# move
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "move" ) ]] ; then
-		local opts="window container to workspace output mark scratchpad left right up down position absolute"
+		local opts="window container to workspace output mark scratchpad left right up down position absolute --no-auto-back-and-forth"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -3262,7 +5307,7 @@ _i3-msg()
 
 	# workspace
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" ) ]] ; then
-		local opts="next_on_output prev_on_output next prev back_and_forth number WORD"
+		local opts="--no-auto-back-and-forth next_on_output prev_on_output next prev back_and_forth number WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -3302,7 +5347,7 @@ _i3-msg()
 
 	# split
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "split" ) ]] ; then
-		local opts="horizontal vertical v h"
+		local opts="horizontal vertical toggle v h t"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -3316,7 +5361,7 @@ _i3-msg()
 
 	# mark
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" ) ]] ; then
-		local opts="--toggle WORD"
+		local opts="--add --replace --toggle WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
