@@ -86,7 +86,7 @@ _i3-msg()
 %s
     # options
     if [[ ${cur} == -* ]] ; then
-        local opts="-t -s"
+        local opts="-q -v -h -s -t --quiet --version --help --socket"
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
@@ -97,7 +97,7 @@ _i3-msg()
         return 0
     fi
 
-    if [[ ${prev} == "-s" ]] ; then
+    if [[ ${prev} == "-s" || ${prev} == "--socket" ]] ; then
         COMPREPLY=( $(compgen -f -- ${cur}) )
         return 0
     fi
