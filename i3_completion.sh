@@ -1,4 +1,4 @@
-# i3 version: 4.12
+# i3 version: 4.13
 
 _i3-msg() 
 {
@@ -4708,6 +4708,20 @@ _i3-msg()
 		return 0
 	fi
 
+	# [ tiling =
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "=" && ${COMP_WORDS[COMP_CWORD-2]} == "tiling" && (${COMP_WORDS[COMP_CWORD-3]} == "[" || ${COMP_WORDS[COMP_CWORD-4]} == "=") ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# [ floating =
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "=" && ${COMP_WORDS[COMP_CWORD-2]} == "floating" && (${COMP_WORDS[COMP_CWORD-3]} == "[" || ${COMP_WORDS[COMP_CWORD-4]} == "=") ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# move window
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "window" && ${COMP_WORDS[COMP_CWORD-2]} == "move" ) ]] ; then
 		local opts="to workspace output mark scratchpad left right up down position absolute"
@@ -5241,6 +5255,20 @@ _i3-msg()
 		return 0
 	fi
 
+	# [ tiling
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "tiling" && (${COMP_WORDS[COMP_CWORD-2]} == "[" || ${COMP_WORDS[COMP_CWORD-3]} == "=") ) ]] ; then
+		local opts="="
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# [ floating
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "floating" && (${COMP_WORDS[COMP_CWORD-2]} == "[" || ${COMP_WORDS[COMP_CWORD-3]} == "=") ) ]] ; then
+		local opts="="
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# move
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "move" ) ]] ; then
 		local opts="window container to workspace output mark scratchpad left right up down position absolute --no-auto-back-and-forth"
@@ -5424,7 +5452,7 @@ _i3-msg()
 
 	# [
 	if [[ $COMP_CWORD -gt 1 && ( (${COMP_WORDS[COMP_CWORD-1]} == "[" || ${COMP_WORDS[COMP_CWORD-2]} == "=") ) ]] ; then
-		local opts="] class instance window_role con_id id window_type con_mark title urgent workspace"
+		local opts="] class instance window_role con_id id window_type con_mark title urgent workspace tiling floating"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
