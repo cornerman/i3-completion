@@ -92,7 +92,7 @@ _i3-msg()
     fi
 
     if [[ ${prev} == "-t" ]] ; then
-        local opts="get_workspaces get_outputs get_tree get_marks get_bar_config get_version"
+        local opts="get_workspaces get_outputs get_tree get_marks get_bar_config get_binding_modes get_version"
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
