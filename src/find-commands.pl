@@ -34,6 +34,38 @@ sub try_command {
     return $response;
 }
 
+sub ambiguous_completions {
+    my $sep = shift;
+    my @tokens = @_;
+
+    # take care of the ambigous "... to/with ..." construction, completion option
+    # with lhs on the left, and rhs on the right side
+    my $idx = firstidx { $_ eq $sep } @tokens;
+    if ($idx > -1) {
+        my @rhs = grep { $_ !~ /-(-[a-z]+)+/ } @tokens;
+        my @lhs = splice @rhs, 0, $idx + 1;
+        pop(@lhs);
+        my @merged;
+        for my $b (@rhs) {
+            for my $a (@lhs) {
+                push(@merged, $a . " " . $sep . " " . $b);
+                push(@merged, $a . " " . $b);
+            }
+            push(@merged, $sep . " " . $b);
+            push(@merged, $b);
+        }
+
+        if (scalar @merged == 0) {
+            @merged = ($sep);
+        }
+
+        my @opts = grep { $_ =~ /-(-[a-z]+)+/ } @tokens;
+        return (@merged, @opts);
+    }
+
+    return @tokens;
+}
+
 sub build_completions {
     my $cmd = shift;
     my $response = shift;
@@ -71,30 +103,8 @@ sub build_completions {
         @tokens = grep { $_ !~ m/-(-[a-z]+)+/ } @tokens;
     }
 
-    # TODO: take care of the ambigous "... to ..." construction, completion option
-    # "to" with lhs on the left, and rhs on the right side
-    my $idx = firstidx { $_ eq "to" } @tokens;
-    if ($idx > -1) {
-        my @rhs = grep { $_ !~ /-(-[a-z]+)+/ } @tokens;
-        my @lhs = splice @rhs, 0, $idx + 1;
-        pop(@lhs);
-        my @merged;
-        for my $b (@rhs) {
-            for my $a (@lhs) {
-                push(@merged, $a . " to " . $b);
-                push(@merged, $a . " " . $b);
-            }
-            push(@merged, "to " . $b);
-            push(@merged, $b);
-        }
-
-        if (scalar @merged == 0) {
-            @merged = ("to");
-        }
-
-        my @opts = grep { $_ =~ /-(-[a-z]+)+/ } @tokens;
-        @tokens = (@merged, @opts);
-    }
+    @tokens = ambiguous_completions("to", @tokens);
+    @tokens = ambiguous_completions("with", @tokens);
 
     # TODO: care about types?
     @tokens = map { $_ eq "<string>" || $_ eq "<number>" ? "<word>" : $_ } @tokens;
