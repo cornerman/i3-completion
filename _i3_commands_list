@@ -1,4 +1,4 @@
-# i3 version: 4.13
+# i3 version: 4.14.1
 move window to workspace next_on_output
 move window to workspace prev_on_output
 move window to workspace next
@@ -490,8 +490,7 @@ layout tabbed
 layout splitv
 layout splith
 layout toggle
-layout toggle split
-layout toggle all
+layout toggle <word>
 append_layout <word>
 workspace --no-auto-back-and-forth next_on_output
 workspace --no-auto-back-and-forth prev_on_output
@@ -647,6 +646,18 @@ rename workspace <word> to <word>
 nop
 nop <word>
 scratchpad show
+swap container with id <word>
+swap container id <word>
+swap with id <word>
+swap id <word>
+swap container with con_id <word>
+swap container con_id <word>
+swap with con_id <word>
+swap con_id <word>
+swap container with mark <word>
+swap container mark <word>
+swap with mark <word>
+swap mark <word>
 title_format <word>
 mode <word>
 bar hidden_state hide

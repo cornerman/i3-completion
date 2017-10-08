@@ -1,4 +1,4 @@
-# i3 version: 4.13
+# i3 version: 4.14.1
 
 _i3-msg() 
 {
@@ -2836,6 +2836,21 @@ _i3-msg()
 		return 0
 	fi
 
+	# swap container with id <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "id" && ${COMP_WORDS[COMP_CWORD-3]} == "with" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap container with con_id <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "con_id" && ${COMP_WORDS[COMP_CWORD-3]} == "with" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap container with mark <word>
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "with" && ${COMP_WORDS[COMP_CWORD-4]} == "container" && ${COMP_WORDS[COMP_CWORD-5]} == "swap" ) ]] ; then
+		return 0
+	fi
+
 	# move window to workspace
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "workspace" && ${COMP_WORDS[COMP_CWORD-2]} == "to" && ${COMP_WORDS[COMP_CWORD-3]} == "window" && ${COMP_WORDS[COMP_CWORD-4]} == "move" ) ]] ; then
 		local opts="next_on_output prev_on_output next prev current back_and_forth number WORD"
@@ -3899,6 +3914,57 @@ _i3-msg()
 		return 0
 	fi
 
+	# swap container with id
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "id" && ${COMP_WORDS[COMP_CWORD-2]} == "with" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap container id <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "id" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap with id <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "id" && ${COMP_WORDS[COMP_CWORD-3]} == "with" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap container with con_id
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "con_id" && ${COMP_WORDS[COMP_CWORD-2]} == "with" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap container con_id <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "con_id" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap with con_id <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "con_id" && ${COMP_WORDS[COMP_CWORD-3]} == "with" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap container with mark
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "with" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap container mark <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "container" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap with mark <word>
+	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "with" && ${COMP_WORDS[COMP_CWORD-4]} == "swap" ) ]] ; then
+		return 0
+	fi
+
 	# bar hidden_state hide <word>
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-2]} == "hide" && ${COMP_WORDS[COMP_CWORD-3]} == "hidden_state" && ${COMP_WORDS[COMP_CWORD-4]} == "bar" ) ]] ; then
 		return 0
@@ -4370,13 +4436,8 @@ _i3-msg()
 		return 0
 	fi
 
-	# layout toggle split
-	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "split" && ${COMP_WORDS[COMP_CWORD-2]} == "toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "layout" ) ]] ; then
-		return 0
-	fi
-
-	# layout toggle all
-	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "all" && ${COMP_WORDS[COMP_CWORD-2]} == "toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "layout" ) ]] ; then
+	# layout toggle <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "toggle" && ${COMP_WORDS[COMP_CWORD-3]} == "layout" ) ]] ; then
 		return 0
 	fi
 
@@ -4586,6 +4647,70 @@ _i3-msg()
 	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "rename" ) ]] ; then
 		local opts="to"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap container with
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "with" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="id con_id mark"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap container id
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "id" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap with id
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "id" && ${COMP_WORDS[COMP_CWORD-2]} == "with" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap id <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "id" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap container con_id
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "con_id" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap with con_id
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "con_id" && ${COMP_WORDS[COMP_CWORD-2]} == "with" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap con_id <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "con_id" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		return 0
+	fi
+
+	# swap container mark
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "container" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap with mark
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "with" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap mark <word>
+	if [[ $COMP_CWORD -gt 3 && ( ${COMP_WORDS[COMP_CWORD-2]} == "mark" && ${COMP_WORDS[COMP_CWORD-3]} == "swap" ) ]] ; then
 		return 0
 	fi
 
@@ -4911,7 +5036,7 @@ _i3-msg()
 
 	# layout toggle
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "toggle" && ${COMP_WORDS[COMP_CWORD-2]} == "layout" ) ]] ; then
-		local opts="split all"
+		local opts="WORD"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -5158,6 +5283,41 @@ _i3-msg()
 
 	# scratchpad show
 	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "show" && ${COMP_WORDS[COMP_CWORD-2]} == "scratchpad" ) ]] ; then
+		return 0
+	fi
+
+	# swap container
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "container" && ${COMP_WORDS[COMP_CWORD-2]} == "swap" ) ]] ; then
+		local opts="with id con_id mark"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap with
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "with" && ${COMP_WORDS[COMP_CWORD-2]} == "swap" ) ]] ; then
+		local opts="id con_id mark"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap id
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "id" && ${COMP_WORDS[COMP_CWORD-2]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap con_id
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "con_id" && ${COMP_WORDS[COMP_CWORD-2]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
+	# swap mark
+	if [[ $COMP_CWORD -gt 2 && ( ${COMP_WORDS[COMP_CWORD-1]} == "mark" && ${COMP_WORDS[COMP_CWORD-2]} == "swap" ) ]] ; then
+		local opts="WORD"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
@@ -5429,6 +5589,13 @@ _i3-msg()
 		return 0
 	fi
 
+	# swap
+	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "swap" ) ]] ; then
+		local opts="container with id con_id mark"
+		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+		return 0
+	fi
+
 	# title_format
 	if [[ $COMP_CWORD -gt 1 && ( ${COMP_WORDS[COMP_CWORD-1]} == "title_format" ) ]] ; then
 		local opts="WORD"
@@ -5459,7 +5626,7 @@ _i3-msg()
 
 	# 
 	if [[ $cur != -* && ($COMP_CWORD == 1 || ${COMP_WORDS[COMP_CWORD-1]} == "]" || ${COMP_WORDS[COMP_CWORD-2]} == "-t" || ${COMP_WORDS[COMP_CWORD-2]} == "-s") ]] ; then
-		local opts="move exec exit restart reload shmlog debuglog border layout append_layout workspace focus kill open fullscreen sticky split floating mark unmark resize rename nop scratchpad title_format mode bar ["
+		local opts="move exec exit restart reload shmlog debuglog border layout append_layout workspace focus kill open fullscreen sticky split floating mark unmark resize rename nop scratchpad swap title_format mode bar ["
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
@@ -5472,7 +5639,7 @@ _i3-msg()
     fi
 
     if [[ ${prev} == "-t" ]] ; then
-        local opts="get_workspaces get_outputs get_tree get_marks get_bar_config get_version"
+        local opts="get_workspaces get_outputs get_tree get_marks get_bar_config get_binding_modes get_version"
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
