@@ -1,4 +1,4 @@
-# i3 version: 4.14.1
+# i3 version: 4.15
 
 _i3-msg() 
 {
@@ -1625,6 +1625,11 @@ _i3-msg()
 		return 0
 	fi
 
+	# resize set <word> px <word> ppt
+	if [[ $COMP_CWORD -gt 6 && ( ${COMP_WORDS[COMP_CWORD-1]} == "ppt" && ${COMP_WORDS[COMP_CWORD-3]} == "px" && ${COMP_WORDS[COMP_CWORD-5]} == "set" && ${COMP_WORDS[COMP_CWORD-6]} == "resize" ) ]] ; then
+		return 0
+	fi
+
 	# move window to workspace next_on_output
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "next_on_output" && ${COMP_WORDS[COMP_CWORD-2]} == "workspace" && ${COMP_WORDS[COMP_CWORD-3]} == "to" && ${COMP_WORDS[COMP_CWORD-4]} == "window" && ${COMP_WORDS[COMP_CWORD-5]} == "move" ) ]] ; then
 		return 0
@@ -2821,13 +2826,18 @@ _i3-msg()
 
 	# resize set <word> px <word>
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-2]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "set" && ${COMP_WORDS[COMP_CWORD-5]} == "resize" ) ]] ; then
-		local opts="px"
+		local opts="px ppt"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi
 
 	# resize set <word> <word> px
 	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "px" && ${COMP_WORDS[COMP_CWORD-4]} == "set" && ${COMP_WORDS[COMP_CWORD-5]} == "resize" ) ]] ; then
+		return 0
+	fi
+
+	# resize set <word> <word> ppt
+	if [[ $COMP_CWORD -gt 5 && ( ${COMP_WORDS[COMP_CWORD-1]} == "ppt" && ${COMP_WORDS[COMP_CWORD-4]} == "set" && ${COMP_WORDS[COMP_CWORD-5]} == "resize" ) ]] ; then
 		return 0
 	fi
 
@@ -3897,7 +3907,7 @@ _i3-msg()
 
 	# resize set <word> <word>
 	if [[ $COMP_CWORD -gt 4 && ( ${COMP_WORDS[COMP_CWORD-3]} == "set" && ${COMP_WORDS[COMP_CWORD-4]} == "resize" ) ]] ; then
-		local opts="px"
+		local opts="px ppt"
 		COMPREPLY=( $(compgen -W "$opts" -- $cur) )
 		return 0
 	fi

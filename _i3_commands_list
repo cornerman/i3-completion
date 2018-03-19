@@ -1,4 +1,4 @@
-# i3 version: 4.14.1
+# i3 version: 4.15
 move window to workspace next_on_output
 move window to workspace prev_on_output
 move window to workspace next
@@ -639,8 +639,10 @@ resize shrink height <word> or <word>
 resize shrink height <word> or <word> ppt
 resize set <word> px <word>
 resize set <word> px <word> px
+resize set <word> px <word> ppt
 resize set <word> <word>
 resize set <word> <word> px
+resize set <word> <word> ppt
 rename workspace to <word>
 rename workspace <word> to <word>
 nop
